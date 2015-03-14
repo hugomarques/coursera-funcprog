@@ -23,7 +23,20 @@ object Main {
   /**
    * Exercise 2
    */
-  def balance(chars: List[Char]): Boolean = ???
+  def balance(chars: List[Char]): Boolean = {
+
+    def loop(n:Int, chars: List[Char]):Boolean =
+      if (n < 0 || chars.isEmpty && n > 0 ) false
+      else if (chars.isEmpty && n == 0) true
+      else loop(n + countparentheses(chars), chars.tail)
+
+    def countparentheses(chars: List[Char]) : Int =
+      if (chars.head == '(') 1 else if (chars.head == ')') -1 else 0
+
+    loop(0, chars)
+
+  }
+
 
   /**
    * Exercise 3
